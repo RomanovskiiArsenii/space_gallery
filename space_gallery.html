@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(24, 24, 24);
+            overflow: hidden;
+            font-size: 16px;
+        }
+
+        .choose_galaxy {
+            width: 100vw;
+        }
+
+        .choose_galaxy__inner {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .choose_galaxy__inner::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .choose_galaxy__inner:has(.color-black.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(0 66 105) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__inner:has(.color-red.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(187 0 15) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__inner:has(.color-orange.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(180 226 232) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__inner:has(.color-green.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(35 179 140) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__inner:has(.color-blue.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(167 55 203) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__inner:has(.color-violet.choose_gallery__image_active)::after {
+            background-image: linear-gradient(to top, rgb(66 84 212) 0%, transparent 50%);
+        }
+
+        .choose_galaxy__image {
+            display: none;
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .choose_gallery__image_active {
+            display: inline-block;
+        }
+
+        .choose_galaxy__list {
+            position: relative;
+            display: flex;
+        }
+
+        .choose_galaxy__btn {
+            height: 15vh;
+            width: 20%;
+            border: none;
+            opacity: .7;
+            background-size: cover;
+            background-position: center;
+            transition: all .5s ease;
+        }
+
+        .choose_galaxy__btn:hover {
+            width: 30%;
+        }
+
+        @media screen and (max-width:500px) {
+            .choose_galaxy__btn:hover {
+                width: 40%;
+            }
+        }
+
+        .choose_galaxy__btn_active {
+            display: none;
+        }
+
+        .choose_galaxy__btn_black {
+            background-image: url(images/g_black.jpg);
+        }
+
+        .choose_galaxy__btn_red {
+            background-image: url(images/g_red.jpg);
+        }
+
+        .choose_galaxy__btn_orange {
+            background-image: url(images/g_orange.jpg);
+        }
+
+        .choose_galaxy__btn_green {
+            background-image: url(images/g_green.jpg)
+        }
+
+        .choose_galaxy__btn_blue {
+            background-image: url(images/g_blue.jpg);
+        }
+
+        .choose_galaxy__btn_violet {
+            background-image: url(images/g_violet.jpg);
+        }
+
+        .credits {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 1vh;
+        }
+
+        .credits a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color .5s ease;
+            font-size: .8rem;
+        }
+
+        .credits a:hover {
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="choose_galaxy">
+        <div class="choose_galaxy__inner">
+            <img class="choose_galaxy__image color-black" src="images/g_black.jpg" alt="galaxy_black">
+            <img class="choose_galaxy__image color-red" src="images/g_red.jpg" alt="galaxy_red">
+            <img class="choose_galaxy__image color-orange" src="images/g_orange.jpg" alt="galaxy_orange">
+            <img class="choose_galaxy__image color-green" src="images/g_green.jpg" alt="galaxy_green">
+            <img class="choose_galaxy__image color-blue" src="images/g_blue.jpg" alt="galaxy_blue">
+            <img class="choose_galaxy__image color-violet choose_gallery__image_active" src="images/g_violet.jpg"
+                alt="galaxy_violet">
+
+            <div class="choose_galaxy__list">
+                <button class="choose_galaxy__btn choose_galaxy__btn_black" data-button="color-black"></button>
+                <button class="choose_galaxy__btn choose_galaxy__btn_red" data-button="color-red"></button>
+                <button class="choose_galaxy__btn choose_galaxy__btn_orange" data-button="color-orange"></button>
+                <button class="choose_galaxy__btn choose_galaxy__btn_green" data-button="color-green"></button>
+                <button class="choose_galaxy__btn choose_galaxy__btn_blue" data-button="color-blue"></button>
+                <button class="choose_galaxy__btn choose_galaxy__btn_violet choose_galaxy__btn_active"
+                    data-button="color-violet"></button>
+            </div>
+
+            <div class="credits">
+                <a
+                    href="https://www.freepik.com/free-ai-image/photorealistic-galaxy-background_94939261.htm#fromView=search&page=9&position=48&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by freepik</a>
+                <a
+                    href="https://www.freepik.com/free-photo/galaxy-night-landscape_13140049.htm#fromView=search&page=1&position=42&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by freepik</a>
+                <a
+                    href="https://www.freepik.com/free-ai-image/photorealistic-galaxy-background_94939190.htm#fromView=search&page=3&position=12&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by freepik</a>
+                <a
+                    href="https://www.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_39616432.htm#fromView=search&page=4&position=20&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by benzoix on Freepik</a>
+                <a
+                    href="https://www.freepik.com/free-ai-image/stars-planet-galaxy-free-space-elements-this-image-furnished-by-nasa_89265092.htm#fromView=search&page=4&position=22&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by flatart on Freepik</a>
+                <a
+                    href="https://www.freepik.com/free-photo/night-sky-reveals-glowing-nebula-amidst-star-field-generated-by-ai_41218846.htm#fromView=search&page=6&position=28&uuid=1f01b779-eabb-4c2b-bc75-baf7e75ddd39">Image
+                    by vecstock on Freepik</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.choose_galaxy__btn');
+        const images = document.querySelectorAll('.choose_galaxy__image');
+        const gradient = document.querySelector('.choose_galaxy__gradient');
+
+        const open = (evt) => {
+            const target = evt.currentTarget;
+            const current = document.querySelector(`.${target.dataset.button}`);
+
+            buttons.forEach(el => {
+                el.classList.remove('choose_galaxy__btn_active');
+            })
+            images.forEach(el => {
+                el.classList.remove('choose_gallery__image_active');
+            })
+
+            target.classList.add('choose_galaxy__btn_active');
+            current.classList.add('choose_gallery__image_active');
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', open);
+        })
+    </script>
+</body>
+
+</html>
